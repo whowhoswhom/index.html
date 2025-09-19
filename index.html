@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intel - Driving Innovation Forward</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --intel-blue: #0071c5;
+            --intel-dark-blue: #003c71;
+            --intel-light-blue: #00a8cc;
+            --intel-gray: #767676;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .navbar-brand {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        [dir="rtl"] .timeline-item {
+            border-right: 4px solid var(--intel-blue);
+            border-left: none;
+            padding-right: 2rem;
+            padding-left: 0;
+        }
+
+        [dir="rtl"] .timeline-content {
+            margin-right: 2rem;
+            margin-left: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--intel-blue), var(--intel-dark-blue));
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            border-left: 4px solid var(--intel-blue);
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--intel-blue);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-left: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .timeline-year {
+            color: var(--intel-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Three Column Section */
+        .features-section {
+            background: #f8f9fa;
+            padding: 5rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,113,197,0.15);
+            border-color: var(--intel-light-blue);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--intel-blue), var(--intel-light-blue));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .feature-card:hover .feature-icon::before {
+            transform: translateX(100%);
+        }
+
+        .feature-icon i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .feature-title {
+            color: var(--intel-dark-blue);
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--intel-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .learn-more-btn {
+            background: linear-gradient(135deg, var(--intel-blue), var(--intel-light-blue));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .learn-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .learn-more-btn:hover::before {
+            left: 100%;
+        }
+
+        .learn-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,113,197,0.3);
+            color: white;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--intel-dark-blue), var(--intel-blue));
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-control {
+            border: none;
+            border-radius: 25px;
+            padding: 15px 25px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.95);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.3);
+            background: white;
+            transform: scale(1.02);
+        }
+
+        .subscribe-btn {
+            background: var(--intel-light-blue);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 35px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subscribe-btn:hover {
+            background: #008bb3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,168,204,0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--intel-light-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #888;
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        .learn-more-btn:focus,
+        .subscribe-btn:focus,
+        .form-control:focus {
+            outline: 3px solid #ffd700;
+            outline-offset: 2px;
+        }
+
+        /* High contrast for accessibility */
+        @media (prefers-contrast: high) {
+            .feature-card {
+                border: 2px solid #000;
+            }
+            
+            .timeline-content {
+                border: 2px solid #000;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .timeline-item {
+                margin-bottom: 2rem;
+            }
+            
+            .timeline-content {
+                margin-left: 1rem;
+            }
+            
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .feature-icon i {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animation for timeline items */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(2) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--intel-dark-blue);" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" aria-label="Intel Homepage">
+                <i class="bi bi-cpu me-2" aria-hidden="true"></i>Intel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#timeline">Timeline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Innovation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#newsletter">Newsletter</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" onclick="toggleRTL()" aria-label="Toggle right-to-left layout">
+                            <i class="bi bi-translate" aria-hidden="true"></i> RTL
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 hero-content">
+                        <h1 id="hero-title" class="display-4 fw-bold mb-4">Driving Innovation Forward</h1>
+                        <p class="lead mb-4">For over 50 years, Intel has been at the forefront of technological advancement, powering the digital transformation that shapes our world.</p>
+                        <a href="#timeline" class="btn btn-light btn-lg">Explore Our Journey</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline" aria-labelledby="timeline-title">
+            <div class="container">
+                <h2 id="timeline-title" class="text-center mb-5 display-5">Intel's Innovation Timeline</h2>
+                <div class="timeline-container">
+                    <article class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1971</div>
+                            <h3>The Birth of the Microprocessor</h3>
+                            <p>Intel introduced the world's first commercial microprocessor, the 4004, revolutionizing computing and laying the foundation for the digital age.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1985</div>
+                            <h3>386 Processor Launch</h3>
+                            <p>The Intel 386 processor brought 32-bit computing to personal computers, enabling more powerful software and multitasking capabilities.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2006</div>
+                            <h3>Core Architecture Revolution</h3>
+                            <p>Intel Core processors introduced multi-core technology, dramatically improving performance while reducing power consumption.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023</div>
+                            <h3>AI-Powered Future</h3>
+                            <p>Intel's latest processors integrate advanced AI capabilities, enabling intelligent computing at the edge and accelerating machine learning workloads.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three-Column Features Section -->
+        <section id="features" class="features-section" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title" class="text-center mb-5 display-5">Innovation Areas</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="feature-title">High Performance Computing</h3>
+                            <p class="feature-description">Delivering breakthrough performance for data centers, AI workloads, and edge computing with our latest processor architectures and accelerated computing solutions.</p>
+                            <a href="#" class="learn-more-btn" aria-label="Learn more about High Performance Computing">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-shield-check" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="feature-title">Security & Privacy</h3>
+                            <p class="feature-description">Built-in security features and hardware-based protection to safeguard data, applications, and infrastructure from evolving cyber threats.</p>
+                            <a href="#" class="learn-more-btn" aria-label="Learn more about Security & Privacy">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-cpu" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="feature-title">AI & Machine Learning</h3>
+                            <p class="feature-description">Accelerating artificial intelligence with specialized processors, optimized software tools, and comprehensive development frameworks for AI innovation.</p>
+                            <a href="#" class="learn-more-btn" aria-label="Learn more about AI & Machine Learning">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Subscription Section -->
+        <section id="newsletter" class="newsletter-section" aria-labelledby="newsletter-title">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 id="newsletter-title" class="display-5 mb-4">Stay Updated on Sustainability</h2>
+                        <p class="lead mb-5">Join our sustainability newsletter to receive the latest updates on Intel's environmental initiatives, green technology innovations, and our journey toward a more sustainable future.</p>
+                        
+                        <form class="newsletter-form" aria-label="Newsletter subscription form">
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    <label for="email" class="sr-only">Email address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email address" required aria-describedby="email-help">
+                                    <div id="email-help" class="sr-only">We'll never share your email with anyone else.</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="subscribe-btn w-100">Subscribe</button>
+                                </div>
+                            </div>
+                            <small class="text-light mt-2 d-block">By subscribing, you agree to receive updates about Intel's sustainability initiatives. You can unsubscribe at any time.</small>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-white mb-3">Intel Corporation</h5>
+                    <p>Leading the industry in processor innovation and computing technology since 1968.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-white mb-3">Products</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Processors</a></li>
+                        <li><a href="#">Graphics</a></li>
+                        <li><a href="#">Chipsets</a></li>
+                        <li><a href="#">AI Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-white mb-3">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-white mb-3">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Intel</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Intel Corporation. All rights reserved. Intel, the Intel logo, and other Intel marks are trademarks of Intel Corporation or its subsidiaries.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // RTL Toggle Function
+        function toggleRTL() {
+            const html = document.documentElement;
+            const currentDir = html.getAttribute('dir');
+            
+            if (currentDir === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+            } else {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            }
+        }
+
+        // Auto-detect language changes (LevelUp feature)
+        function detectLanguageChange() {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
+                        const lang = document.documentElement.getAttribute('lang');
+                        const rtlLanguages = ['ar', 'he', 'fa', 'ur', 'ps', 'sd'];
+                        
+                        if (rtlLanguages.includes(lang)) {
+                            document.documentElement.setAttribute('dir', 'rtl');
+                        } else {
+                            document.documentElement.setAttribute('dir', 'ltr');
+                        }
+                    }
+                });
+            });
+
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['lang']
+            });
+        }
+
+        // Form submission handling
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            if (email) {
+                // Simulate successful subscription
+                alert('Thank you for subscribing to Intel\'s sustainability newsletter!');
+                document.getElementById('email').value = '';
+            }
+        });
+
+        // Initialize language detection
+        detectLanguageChange();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for timeline animations
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const timelineObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+    </script>
+</body>
+</html>
